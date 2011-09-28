@@ -63,7 +63,7 @@ nav ul li {
 }
 
 nav ul li a {
-	padding: 0;
+	padding: 0 5px;
 	font-weight: bold;
 }
 
@@ -99,7 +99,16 @@ a.signup_button {
 	border-radius: 10px;
 }
 
-
+footer {
+	text-align: center;
+	margin-top: 10px;
+	width: 710px;
+	margin-right: auto;
+	margin-left: auto;
+}
+footer nav {
+	float: none;
+}
 
 
 
