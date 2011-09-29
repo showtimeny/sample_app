@@ -15,7 +15,7 @@ header {
 
 header img {
 	
-	padding: 1m;
+	padding: 1em;
 	background: #fff;
 }
 section{
@@ -110,6 +110,9 @@ footer nav {
 	float: none;
 }
 
+section h1 {
+	
+}
 
 
 
