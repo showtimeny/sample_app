@@ -90,7 +90,7 @@ PLATFORMS
 
 DEPENDENCIES
   rails (= 3.0.1)
-  rspec
-  rspec-rails
+  rspec (= 2.0.0.beta.18)
+  rspec-rails (= 2.0.0.beta.18)
   spork
   sqlite3-ruby (= 1.2.5)
