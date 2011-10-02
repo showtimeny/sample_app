@@ -2,7 +2,7 @@ require 'spec_helper'
 
 describe LayoutLinks do
   
-  it "should have a Home page at '/'"
+  it "should have a Home page at '/'" do
     get '/'
     response.should have_selector('title', :content => "Home")
   end
@@ -34,7 +34,7 @@ describe LayoutLinks do
     response.should have_selector("title", :content => "Home")  
     click_link "Sign up now!"
     response.should have_selector("title", :content => "Sign up")  
-    response.should have_selector('a[href="/"]>img')
+    response.should have_selector('a[href="/"]>img') 
   end
 
 end
