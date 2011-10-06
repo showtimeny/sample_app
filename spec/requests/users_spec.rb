@@ -18,19 +18,20 @@ describe "Users" do
         end.should_not change(User, :count)
       end
     end
-  end
-  describe "success" do
-    it "should make a new user" do
-      lambda do
-        visit signup_path
-        fill_in "Name", :with => "Test User"
-        fill_in "Email", :with => "tuser@example.com"
-        fill_in "Password", :with => "adminosaur"
-        fill_in "Confirmation", :with => "adminosaur"   
-        click_button
-        response.should have_selector('div.flash.success', :content => "Welcome")
-        response.should render_template('users/show')
-      end.should change(User, :count).by(1)
+  
+    describe "success" do
+      it "should make a new user" do
+        lambda do
+          visit signup_path
+          fill_in "Name", :with => "Test User"
+          fill_in "Email", :with => "tuser@example.com"
+          fill_in "Password", :with => "adminosaur"
+          fill_in "Confirmation", :with => "adminosaur"   
+          click_button
+          response.should have_selector('div.flash.success', :content => "Welcome")
+          response.should render_template('users/show')
+        end.should change(User, :count).by(1)
+      end
     end
   end
 end
