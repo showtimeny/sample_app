@@ -8,9 +8,7 @@ describe UsersController do
     before(:each) do
       @user = Factory(:user)
     end
-    
-    
-    
+      
     it "should be successful" do
       get :show, :id => @user.id
       response.should be_successful
@@ -42,8 +40,6 @@ describe UsersController do
     end
   end
   
-  
-  
   describe "GET 'new'" do
     it "should be successful" do
       get :new
@@ -53,8 +49,56 @@ describe UsersController do
     it "should have the right title" do
          get :new
          response.should have_selector('title', :content => "Sign up")
-       end
-    
+     end  
   end
-
+  
+  describe "POST 'create'" do
+    
+    # FAILURE!!!
+    describe "failure" do
+      # Every time the browser posts create, make a hash with empty strings as elements...
+      before(:each) do
+        @attr = {:name => "", :email => "", :password => "", :password_confirmation => ""}
+      end
+      
+      it "should not create a user" do
+        lambda do
+          post :create, :user => @attr
+        end.should_not change(User, :count)
+      end
+      
+      it "should have the right title" do
+        post :create, :user => @attr
+        response.should have_selector('title', :content => "Sign up")
+      end
+      
+      it "should render the 'new page" do
+        post :create, :user => @attr
+        response.should render_template('new')
+      end
+    end
+    describe "success" do
+      before(:each) do
+        @attr = {:name => "New User", :email => "new@example.com", :password => "examplesaur", :password_confirmation => "examplesaur"}
+      end
+      
+      it "should create a user" do
+        lambda do
+          post :create, :user => @attr
+          response.should change(User, :count).by(1)
+        end
+      end
+      
+      it "should redirect to the user show page" do
+        post :create, :user => @attr
+        response.should redirect_to(user_path(assigns(:user)))
+      end
+      
+      it "should have a welcome message" do
+        post :create, :user => @attr
+        flash[:success].should =~ /welcome to the sample app/i
+      end
+    end
+      
+  end
 end
