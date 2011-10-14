@@ -45,6 +45,13 @@ RSpec.configure do |config|
   # config.mock_with :mocha
   # config.mock_with :flexmock
   # config.mock_with :rr
+  
+  #allows you to sign in as a dummy user during tests
+  def test_sign_in(user)
+    controller.sign_in(user)
+  end
+  
+  
   config.mock_with :rspec
 
   config.fixture_path = "#{::Rails.root}/spec/fixtures"
